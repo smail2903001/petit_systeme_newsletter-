@@ -20,3 +20,4 @@ AAA;
 <?= nav_item('../index.php', 'Accueil', $class); ?>
 <?= nav_item('../contact.php', 'Contact', $class); ?>
 <?= nav_item('../newsletter.php', 'Newsletter', $class); ?>
+<?= nav_item('../dashboard.php', 'dashboard', $class); ?>

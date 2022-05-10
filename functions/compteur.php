@@ -33,3 +33,30 @@ function nombre_vues(bool $journalier = false): string
     }
     return file_get_contents($fichier);
 }
+
+
+function nombre_vues_mois(int $annee, int $mois): int
+{
+    $mois = str_pad($mois, 2, '0', STR_PAD_LEFT);
+    $fichier = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'compteur-' . $annee . '-' . $mois . '-' . '*';
+    $fichiers = glob($fichier);
+    $total = 0;
+    foreach ($fichiers as $fichier) {
+        $total += (int)file_get_contents($fichier);
+    }
+    return $total;
+}
+
+function nombre_vues_details_mois(int $annee, int $mois): int
+{
+    $mois = str_pad($mois, 2, '0', STR_PAD_LEFT);
+    $fichier = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'compteur-' . $annee . '-' . $mois . '-' . '*';
+    $fichiers = glob($fichier);
+    $total = 0;
+    $vues = [];
+    foreach ($fichiers as $fichier) {
+        var_dump($fichier);
+        die();
+    }
+    return $total;
+}

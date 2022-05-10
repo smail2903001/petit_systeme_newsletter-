@@ -1,4 +1,8 @@
 <?php
+require './functions/compteur.php';
+nombre_vues_mois(11, 03);
+session_start();
+$_SESSION['role'] = 'administrateur';
 $title = "Page d'accueil";
 require './elements/header.php'; ?>
 <div class="starter-template">

@@ -7,6 +7,11 @@
         $vues = nombre_vues();
         ?>
         Il y a <?= $vues ?> <?php echo $vues === '1' ? 'viste' : 'vistes'; ?> sur le site
+        <br>
+        <?php
+        $vues = nombre_vues(true);
+        ?>
+        Il y a <?= $vues ?> <?php echo $vues === '1' ? 'viste' : 'vistes'; ?> sur le site ce jour la
     </div>
     <div class="col-md-4"></div>
     <div class="col-md-4">

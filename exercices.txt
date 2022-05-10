@@ -1,0 +1,203 @@
+=======================================================================================
+==================================== Exercice 1 ===========================================
+/* Remplir les notes dans un tableau , entrees par une uitlisateur tant qu'il n'a pas entre 'fin' */
+
+<?php
+$notes = [];
+while (true) {
+    $note = (int)readline('Entrez une note ');
+    $notes[] = $note;
+    $fin = readline("Entrez quelque chose != de fin pr contineur ");
+    if ($fin === 'fin') {
+        break;
+    }
+}
+foreach ($notes as $note) {
+    echo " - $note \n";
+}
+=======================================================================================
+==================================== Exercice 2===========================================
+/* On veut demander a l'utilisateur de rentrer les horaires d'ouverture d'un magasin*/
+/* on demande a l'utilisateur de rentrer une heure et on lui dira si le magsin est ouvert */
+
+/* -Pesudo Code 
+        # on demande a l'utilisateur de rentrer un creneau
+            @ On demande l'heure de debut 
+            @ On demande l'heure de fin 
+            @ On verifie que l'heure de debut < l'heure de fin 
+            @ on demande si on veut rajouter un nouveau creneaux (o/n) 
+        # on demande a l'utilisateur de rentrer une heure 
+        # on affiche l'etat d'ouverture du magasin   
+*/
+
+
+$creneaux = [];
+while (true) {
+    $debut = (int)readline('donne l\'heure de debut  du creneau');
+    $fin = (int)readline('Donne l\'heure de fin du creneau');
+    if ($debut >= $fin) {
+        echo "Creneau invalide ($debut) >= $($fin)";
+    } else {
+        $creneaux[] = [$debut, $fin];
+        $choix = readline("Voulez vous ajouter un autre creneau (o\\n)");
+        if ($choix === "n") {
+            break;
+        }
+    }
+}
+
+$heure = (int)readline('A quelle heure voulez vous visiter le magasin ');
+$creneaauTrouve = false;
+foreach ($creneaux as $creneau) {
+    if ($heure >= $creneau[0] && $heure <= $creneau[1]) {
+        $creneaauTrouve = true;
+        break;
+    }
+}
+
+if ($creneaauTrouve) {
+    echo "Le magasin sera ouvert ";
+} else {
+    echo "Desole le magasin sera ferme";
+}
+
+
+
+
+/* on veut afficher les creneaux sous format suivante : 
+    le magasin est ouvert de 8h a 12h et de 13h a 19h
+*/
+
+
+echo "Le magasin est ouvert de ";
+foreach ($creneaux as $k => $creneau) {
+    if ($k > 0) {
+        echo " et de ";
+    }
+    echo "{$creneau[0]}h a {$creneau[1]}h";
+}
+
+=======================================================================================
+==================================== Exercice 3===========================================
+/* verifier un mot de l'utilisateur est un palindrome ou non */
+
+
+$chaine = strtolower(readline("Entrer le mot a verifier "));
+
+$invr = strrev($chaine);
+
+if ($chaine === $invr) {
+    echo " C'est une palindrome";
+} else {
+    echo "ce n'est pas une plaindrome ";
+}
+=======================================================================================
+==================================== Exercice 4===========================================
+
+
+
+/* calcule la moyenne d'un tableau */
+$notes = [10, 15, 17];
+$moy = array_sum($notes) / count($notes);
+
+echo $moy;
+
+
+=======================================================================================
+==================================== Exercice 5===========================================
+/* Filter a un inseltes => 'merde' , 'con' 
+-- les remplacer avec des *** .
+*/
+
+$insultes = ['merde', 'con'];
+$asterisque = [];
+foreach ($insultes as $insulte) {
+    $replace = substr($insulte, 0, 1) . str_repeat('*', strlen($insulte) - 1);
+    $asterisque[] = $replace;
+}
+$phrase = readline('Entrez une phrase svp ==> ');
+$phrase = str_replace($insultes, $asterisque, $phrase);
+
+
+var_dump($phrase);
+
+
+
+=======================================================================================
+==================================== Exercice 6===========================================
+
+/* fct qu'elle prennent en params une phrase 
+   elle demandera a l'utilisateur de se taper 
+   oui pr continuer => renvoie true
+   non pr terminuer => renvoie false 
+   si jamais l'utilisatuer tape autre chose 
+   elle va lui redemander de tape son choix */
+
+// si l'utilisateur tape "o" => true
+// si l'utilisateur tape "n" => false 
+function repondre_oui_non(string $phrase = 'Voulez vous continuer'): bool
+{
+    $choix = readline($phrase . ' ((o/n)) => ');
+    if ($choix === 'o') {
+        return true;
+    } elseif ($choix === 'n') {
+        return false;
+    } else {
+        return repondre_oui_non('choix incorrect ');
+    }
+}
+
+$resultat = repondre_oui_non();
+
+var_dump($resultat);
+
+
+
+
+
+
+=======================================================================================
+==================================== Exercice 7===========================================
+// demander creaneau ==> $creneau = demander_creneau(); => [8,12]
+//		==> $creneau2 = demander_creneau('Veuillez entrer votre creneau ');
+
+
+
+function demander_creneau($phrase = 'Veuillez entrer un creneau')
+{
+    echo $phrase . "\n";
+    while (true) {
+        $ouverture = readline('Heure d\'ouverture : ');
+        if ($ouverture > 0 && $ouverture < 23) {
+            break;
+        }
+    }
+    while (true) {
+        $fermeture = readline('Heure de fermuture : ');
+        if ($fermeture > 0 && $fermeture <= 23 && $fermeture > $ouverture) {
+            break;
+        }
+    }
+    return [$ouverture, $fermeture];
+}
+
+
+// demander_creneaux(entrez vos creneaux)
+function demander_creneaux($phrase = 'Entrez vos creneaux')
+{
+    while (true) {
+        $creneau = demander_creneau($phrase);
+        $creneaux[] = $creneau;
+        if (!repondre_oui_non()) {
+            return $creneaux;
+        }
+    }
+}
+$creneaux = demander_creneaux();
+var_dump($creneaux);
+
+
+=========================================================
+========================== Exercice 8 ======================
+
+

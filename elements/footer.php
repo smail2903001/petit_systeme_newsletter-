@@ -1,6 +1,13 @@
 </main><!-- /.container -->
 <div class="row">
-    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <?php
+        require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'functions' . DIRECTORY_SEPARATOR . 'compteur.php';
+        ajouter_vue();
+        $vues = nombre_vues();
+        ?>
+        Il y a <?= $vues ?> <?php echo $vues === '1' ? 'viste' : 'vistes'; ?> sur le site
+    </div>
     <div class="col-md-4"></div>
     <div class="col-md-4">
         <h2>Navigation</h2>

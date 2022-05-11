@@ -1,7 +1,10 @@
 <?php
 $erreur = null;
+$password = '$2y$12$aPquvIDYTTl6mKyXgz6fhOisoTK82NFrvmP21GEekvnRmW9jb9DIy';
+// securiser vos informations => chiffrement (moins securise) , hashage(generation de la signature: plus securise)
+/* 2 fcts => password_hash et password_verify  */
 if (!empty($_POST['pseudo']) && !empty($_POST['motdepasse'])) {
-    if ($_POST['pseudo'] === 'Smail' && $_POST['motdepasse'] === '1234') {
+    if ($_POST['pseudo'] === 'Smail' &&  password_verify($_POST['motdepasse'], $password)) {
         // on connecte l'utilisateur 
         session_start();
         $_SESSION['connecte'] = 1;

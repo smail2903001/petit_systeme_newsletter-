@@ -1,4 +1,6 @@
 <?php
+session_start();
+require './elements/header.php';
 $error = null;
 $email = null;
 $success = null;
@@ -14,7 +16,6 @@ if (!empty($_POST['email'])) {
         $error = "Email invalide";
     }
 }
-require './elements/header.php';
 
 ?>
 

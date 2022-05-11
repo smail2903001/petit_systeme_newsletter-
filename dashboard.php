@@ -1,5 +1,9 @@
 <?php
-require './functions/compteur.php';
+$_SESSION['connecte'] = 1;
+require_once './functions/auth.php';
+forcer_utilisateur_connecte();
+require_once './functions/compteur.php';
+
 $annee = (int)date('Y');
 $annee_selection = !empty($_GET['annee']) ? (int)$_GET['annee'] : null;
 $mois_selection = !empty($_GET['mois']) ? $_GET['mois'] : null;
@@ -22,7 +26,7 @@ $mois = [
     '11' => 'Novembre',
     '12' => 'Decembre'
 ];
-require 'elements/header.php'; ?>
+require_once 'elements/header.php'; ?>
 <div class="row">
     <div class="col-md-4">
         <div class="list-group-item">
@@ -49,4 +53,4 @@ require 'elements/header.php'; ?>
     </div>
 </div>
 <hr>
-<?php require 'elements/footer.php'; ?>
+<?php require_once 'elements/footer.php'; ?>

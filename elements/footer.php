@@ -1,4 +1,6 @@
 </main><!-- /.container -->
+<br>
+<hr>
 <div class="row">
     <div class="col-md-4">
         <?php

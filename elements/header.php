@@ -1,3 +1,6 @@
+<?php
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'functions' . DIRECTORY_SEPARATOR . 'auth.php';
+?>
 <!doctype html>
 <html lang="en">
 
@@ -39,7 +42,13 @@
                 ?>
                 <?php require './elements/menu.php'; ?>
             </ul>
+            <ul class="navbar-nav">
+                <?php if (est_connecte()) : ?>
+                    <li class="nav-item"><a class="nav-link" href="/logout.php">Se deconnecter</a></li>
+                <?php endif; ?>
+            </ul>
         </div>
+
     </nav>
 
     <main role="main" class="container">

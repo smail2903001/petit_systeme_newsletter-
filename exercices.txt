@@ -199,5 +199,11 @@ var_dump($creneaux);
 
 =========================================================
 ========================== Exercice 8 ======================
-
+Systeme de connexion 
+La logique : 
+1- Mettre en place un systeme pour bloquer l'utilisateur .
+(je vais le mettre dans une nouvelle serie de fonctions que je vais le nommer auth.php)
+et ecrire une fonction qui verifier que l'utilisateur est connecte ou non ( bool ), 
+on va etre base sur les sessions 
+2- 
 
